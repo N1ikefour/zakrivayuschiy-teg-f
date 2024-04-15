@@ -12,8 +12,20 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes active-theme {
+  0% {
+    left: -12px;
+  }
+
+  100% {
+    left: -16px;
+  }
+}
+
 .card__icon-button{
   transition: border 0.5s ease;
+  padding: 0px 0px 0px;
 }
 
 .like-icon {

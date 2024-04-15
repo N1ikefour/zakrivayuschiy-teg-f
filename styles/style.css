@@ -24,6 +24,7 @@
   background: var(--background);
   background-image: var(--background);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .header {
@@ -32,6 +33,7 @@
   min-height: 327px;
   margin: 100px 0 100px 0;
   padding-top: 120px;
+  padding-bottom: 19px;
   border:  2px solid var(--accent-color);
   background-color: var(--bg-color);
   display: flex;
@@ -51,6 +53,7 @@
   line-height: 49px;
   text-align: left;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .subtitle {
@@ -93,6 +96,11 @@
   position: relative;
 }
 
+.content-image {
+  position: relative;
+  border: 2px solid var(--accent-color)
+}
+
 .theme-menu__button:disabled::before {
   content: "▶";
   /* margin-left: -27px */
@@ -101,21 +109,16 @@
   top: -2px;
   animation: active-theme 0.5s ease-in-out infinite alternate;
 }
-@keyframes active-theme {
-  0% {
-    left: -12px;
-  }
-
-  100% {
-    left: -16px;
-  }
-}
 
 .theme-menu__button:focus-visible {
   outline: none;
   opacity: .6;
- 
   transition: opacity 0.3s, text-decoration 3s;
+}
+
+.theme-menu__button:focus,
+.card__icon-button:focus {
+  outline: none;
 }
 
 .theme-menu__button::after {
@@ -137,11 +140,11 @@
 }
 
 
-.no-mobile {
+.page__section {
   width: 100%;
 }
 
-main {
+.main {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -176,12 +179,14 @@ main {
   opacity: .5;
   font-size: 14px;
   line-height: 14px;
+
   text-shadow: -1px -1px 0 var(--bg-color),  
                 1px -1px 0 var(--bg-color),
                 -1px 1px 0 var(--bg-color),
                 1px 1px 0  var(--bg-color); 
   mix-blend-mode: hard-light; 
   z-index: 3;
+  -webkit-text-stroke: 1px var(--bg-color);
 }
 
 img {
@@ -190,6 +195,7 @@ img {
   object-fit: cover;
   object-position: center;
   max-height: 375px;
+  margin-bottom: -3px;
 }
 
 .text {
@@ -208,7 +214,7 @@ img {
   display: flex;
   justify-content: flex-end;
   background-color: transparent;
-  margin: 25px 25px 25px auto;
+  margin: 29px 25px 25px auto;
   gap: 7px;
 }
 
@@ -229,10 +235,15 @@ img {
   overflow: hidden;
 }
 
-.card__like-button:focus,
-.footer-button:focus {
+.card__like-button:focus-visible:not(.card__like-button:active),
+.footer-button:focus-visible:not(.footer-button:active) {
   outline: none; 
   box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.card__like-button:active,
+.footer-button:active {
+  box-shadow: none;
 }
 
 .card__like-button span,
@@ -310,13 +321,9 @@ img {
   background-color: transparent;
   outline: none;
   border: 2px solid transparent;
-  height: 38px;
+  height: 39px;
+  cursor: pointer;
 }
-
-
-
-
-
 
 .footer-button {
   background-color: transparent;
@@ -330,12 +337,14 @@ img {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 60px 35px 102px 35px;
+  margin: auto;
+  margin-bottom: 102px;
   align-items: center;
   padding: 15px 16px 15px 20px;
   border:  2px solid var(--accent-color);
   cursor: pointer;
   position: relative;
+  overflow: hidden;
 }
 
 .card__icon-button:focus-visible {
@@ -376,12 +385,12 @@ dialog.opened {
 dialog {
   font-family: var(--pixel-font);
   color: var(--accent-color);
-  width: 341px;
-  height: 191px;
+  font-weight: var(--title-weight);
+  width: 357px;
   margin: auto;
   background-color: var(--bg-color);
   border: 2px solid var(--accent-color);
-  padding: 30px 32px 0px 36px;
+  padding: 30px 32px 30px 36px;
 }
 
 .subtitle-icon {
@@ -390,6 +399,8 @@ dialog {
   justify-content: center;
   align-content: center;
   gap: 20px;
+  text-transform: uppercase;
+  line-height: 21px;
 }
 
 .icon-dialog {
@@ -399,6 +410,8 @@ dialog {
 .dialog-button {
   width: 100%;
   margin-top: 30px;
+  font-weight: var(--title-weight);
+  text-transform: uppercase;
 }
 
 .subtitle-dialog {
@@ -440,15 +453,13 @@ dialog {
 
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(7px);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 @media (width >= 700px) {
-  .no-mobile {
+  .page__section {
     margin: 100px auto;
     align-items: center;
-    height: 368px;
     max-width: 700px;
     padding-top: 145px;
   }
