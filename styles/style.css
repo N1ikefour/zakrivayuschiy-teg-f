@@ -95,7 +95,8 @@
 
 .content-image {
   position: relative;
-  border: 2px solid var(--accent-color)
+  border-bottom: 2px solid var(--accent-color);
+  border-top: 2px solid var(--accent-color);
 }
 
 .theme-menu__button:disabled::before {
